@@ -1,3 +1,2 @@
 #!/bin/bash
-export PYTHON_SCRIPT_NAME=$PYFILE
-python3 $PYTHON_SCRIPT_NAME
+python3 $PYFILE
