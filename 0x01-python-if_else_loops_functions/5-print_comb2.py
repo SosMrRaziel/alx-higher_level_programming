@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 for index in range(0, 100):
     if index == 99:
-       print(f"{index:d}")
+       print("{}".format(index))
     else:
-       print(f"{index:02}", end=", ")
+       print("{:02}".format(index), end=", ")
