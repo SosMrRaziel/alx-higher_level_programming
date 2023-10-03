@@ -5,4 +5,3 @@ for index in range(10):
             print("{}{}".format(index, jndix))
         else:
             print("{}{}".format(index, jndix), end=", ")
-
