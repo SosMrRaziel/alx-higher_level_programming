@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-from lazy import more_lazier
+if __name__ == '__main__':
+    from lazy import more_lazier
