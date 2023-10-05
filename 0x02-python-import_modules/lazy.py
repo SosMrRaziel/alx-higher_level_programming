@@ -1,2 +1,4 @@
 #!/usr/bin/python3
-print("#pythoniscool")
+def lazier():
+    print("#pythoniscool")
+more_lazier = lazier()
