@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''cass square'''
+'''calc square'''
 
 
 class Square:
