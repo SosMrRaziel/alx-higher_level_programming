@@ -3,5 +3,5 @@
 
 
 class Square:
-    ''''its an empty class!'''
+    '''its an empty class!'''
     pass
