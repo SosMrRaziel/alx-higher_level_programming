@@ -38,5 +38,8 @@ class TestMaxInteger(unittest.TestCase):
         matrix1 = [3,3,3,3,3]
         self.assertEqual(max_integer(matrix1),3)
 
+    def test_ten(self):
+        matrix1 = [3.2,5.4,-8.6,0.4,17.5]
+        self.assertEqual(max_integer(matrix1),17.5)
 if __name__ == '__main__':
     unittest.main()
