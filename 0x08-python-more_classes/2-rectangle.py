@@ -3,7 +3,8 @@
 
 
 class Rectangle:
-    """A class that defines a rectangle by its width, height, area and perimeter"""
+    """A class that defines a rectangle by its width, height,
+                 area and perimeter"""
 
     def __init__(self, width=0, height=0):
         """Initialize a new rectangle with optional width and height"""
@@ -47,4 +48,3 @@ class Rectangle:
         if self.width == 0 or self.height == 0:
             return 0
         return 2 * (self.width + self.height)
-    
