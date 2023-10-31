@@ -58,7 +58,7 @@ class Rectangle:
         if self.width == 0 or self.height == 0:
             return ""
         return "\n".join([str(Rectangle.print_symbol)
-                        * self.width for _ in range(self.height)])
+                          * self.width for _ in range(self.height)])
 
     def __repr__(self):
         """Return a string representation of the rectangle
@@ -78,8 +78,9 @@ class Rectangle:
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
             raise TypeError("rect_2 must be an instance of Rectangle")
-        
-        # Compare the areas of the two rectangles and return the bigger or equal one
+
+        # Compare the areas of the two rectangles and
+        #  return the bigger or equal one
         if rect_1.area() >= rect_2.area():
             return rect_1
         else:
