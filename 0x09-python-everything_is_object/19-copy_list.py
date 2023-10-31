@@ -1,2 +1,3 @@
-def copy_list(l):
-    return [x for x in l]
+#!/usr/bin/python3
+def copy_list(lmo):
+    return [x for x in lmo]
