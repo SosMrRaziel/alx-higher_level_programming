@@ -1,66 +1,49 @@
-::
-Tests for add_integer in 0-add_integer.py
-::
+###############################################
+#  Tests for add_integer in 0-add_integer.py  #
+###############################################
 
 This is a set of test cases for the module add_integer (adds
 two integers/floats and returns sum).
 
-::
+
 >>> add_integer = __import__('0-add_integer').add_integer
 
     """Test adding two integers."""
->>> add_integer(1, 2), 3
->>> add_integer(-5, 10), 5
->>> add_integer(0, 0), 0
+>>> add_integer(1, 2)
+3
 
-::
-        """Test adding two floats."""
->>> add_integer(1.5, 2.5), 3
->>> add_integer(-3.7, 4.2), 0
->>> add_integer(0.0, 0.0), 0
-::
-        """ add one argument"""
+>>> add_integer(100, -2)
+98
 
 >>> add_integer(2)
 100
-::
-        """ add one float arguement"""
->>> add_integer(7.3)
-105
 
-::
-        """Test adding an integer and a float."""
+>>> add_integer(100.3, -2)
+98
 
->>> add_integer(1, 2.5), 3
->>> add_integer(-4, 3.7), -1
->>> add_integer(0, -0.5), -1
-::
-        """ no argument""""
+>>> add_integer(-4, -2)
+-6
 
->>> add_integer()
-Traceback (most recent call last):
-TypeError: add_integer() missing 1 required positional argument: 'a'
-::
+>>> add_integer(-4.5, -2.2)
+-6
+
+
+#################################################
         """Incorrect input types raise errors"""
 
 
->>> add_integer('one', 2)
+>>> add_integer(None)
 Traceback (most recent call last):
-    ...
 TypeError: a must be an integer
 
->>> add_integer(1, 'two')
+>>> add_integer(4, "School")
 Traceback (most recent call last):
-    ...
 TypeError: b must be an integer
 
->>> add_integer(None, None)
+>>> add_integer(0, float('nan'))
 Traceback (most recent call last):
-    ...
-TypeError: a must be an integer
+ValueError: cannot convert float NaN to integer
 
->>> add_integer(a)
+>>> add_integer(float('inf'), 0)
 Traceback (most recent call last):
-    ...
-NameError: name 'a' is not defined
-::
+OverflowError: cannot convert float infinity to integer
