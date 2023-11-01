@@ -24,6 +24,12 @@ two integers/floats and returns sum).
 >>> add_integer(-4, 3.7), -1
 >>> add_integer(0, -0.5), -1
 
+        """ no argument""""
+
+>>> add_integer()
+Traceback (most recent call last):
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
         """Incorrect input types raise errors"""
 
 
