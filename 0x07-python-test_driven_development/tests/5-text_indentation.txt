@@ -7,47 +7,38 @@ which prints a square composed of '#'s to the dimension passed to it.
 
 # Import module
 
-	>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Tests
-=====
 
-text_indentation will format and print a line of '.', '?' or ':'-terminated text,
-followed by two newline. Each line with be free of whitespace at either end. The user
-must pass a string argument to the function; otherwise, a TypeError is raised.
+# text = string with characters
+>>> text = "blue. green: yellow? red"
+>>> text_indentation(text)
+blue.
+<BLANKLINE>
+green:
+<BLANKLINE>
+yellow?
+<BLANKLINE>
+red
 
-# Base behavior
+# text = string with no characters
+>>> text_indentation("string with no characters")
+string with no characters
 
-	>>> text_indentation('To be: or not     to be? That\'s the	 q. will s')
-	To be:
-	<BLANKLINE>
-	or not     to be?
-	<BLANKLINE>
-	That's the 	 q.
-	<BLANKLINE>
-	will s
+# text = integer
+>>> text_indentation(5)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
 
-	>>> text_indentation('There\'s a snake in my boot')
-	There's a snake in my boot
 
-	>>> text_indentation('   .?:	  ')
-	.
-	<BLANKLINE>
-	?
-	<BLANKLINE>
-	:
-	<BLANKLINE>
+# text = with no space
+>>> text_indentation("hello.there")
+hello.
+<BLANKLINE>
+there
 
-# Non-string argument
-
-	>>> text_indentation(666)
-	Traceback (most recent call last):
-	TypeError: text must be a string
-
-	>>> text_indentation(None)
-	Traceback (most recent call last):
-	TypeError: text must be a string
-
-# Empty string argument
-
-	>>> text_indentation('')
+# text = one match
+>>> text_indentation("hello.")
+hello.
+<BLANKLINE>
