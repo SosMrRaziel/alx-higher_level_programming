@@ -1,30 +1,29 @@
 #!/usr/bin/python3
-"""
-5-text_indentation.py
-def text_indentation(text)
-tests/5-text_indentation.txt
-"""
+'''text indentation function'''
 
 
 def text_indentation(text):
     """
-    Prints text with two newlines separating each line
+    Prints a text with 2 new lines after each of these characters: ., ? and :
+
+    Args:
+        text (str): The text to be printed
+
+    Raises:
+        TypeError: If `text` is not a string
+
+    Returns:
+        None
     """
-    if type(text) is not str:
+    if not isinstance(text, str):
         raise TypeError("text must be a string")
-    text = text.strip(" ")
-    sep = [".", "?", ":"]
     i = 0
     while i < len(text):
-        if text[i] in sep:
-            print("{}\n".format(text[i]))
-            i += 1
-            if i == len(text):
-                return
-            while text[i] is " " and i < len(text):
+        if text[i] == '.' or text[i] == '?' or text[i] == ':':
+            print(text[i])
+            print()
+            if i < len(text) - 1 and text[i + 1] == ' ':
                 i += 1
-            continue
-        print("{}".format(text[i]), end='')
+        else:
+            print(text[i], end="")
         i += 1
-        if i == len(text) and text[i - 1] in sep:
-            print("\n")

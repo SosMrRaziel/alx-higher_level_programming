@@ -1,3 +1,20 @@
+#########################################################
+#   Tests for text_indentation in 5-text_indentation.py #
+#########################################################
+
+This is a set of test cases for the module print_square - a function
+which prints a square composed of '#'s to the dimension passed to it.
+
+=============================================================================
+
+# Import module
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Tests
+=====
+
+
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 >>> text_indentation("String")
 String
