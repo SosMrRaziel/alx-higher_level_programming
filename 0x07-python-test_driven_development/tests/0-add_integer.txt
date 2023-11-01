@@ -17,6 +17,15 @@ two integers/floats and returns sum).
 >>> add_integer(-3.7, 4.2), 0
 >>> add_integer(0.0, 0.0), 0
 
+        """ add one argument"""
+
+>>> add_integer(2)
+100
+
+        """ add one float arguement"""
+>>> add_integer(7.3)
+105
+
 
         """Test adding an integer and a float."""
 
@@ -27,21 +36,24 @@ two integers/floats and returns sum).
         """ no argument""""
 
 >>> add_integer()
-Traceback (most recent call last):
+    ...
 TypeError: add_integer() missing 1 required positional argument: 'a'
 
         """Incorrect input types raise errors"""
 
 
 >>> add_integer('one', 2)
-Traceback (most recent call last):
+    ...
 TypeError: a must be an integer
 
 >>> add_integer(1, 'two')
-Traceback (most recent call last):
+    ...
 TypeError: b must be an integer
 
 >>> add_integer(None, None)
-Traceback (most recent call last):
+    ...
 TypeError: a must be an integer
 
+>>> add_integer(a)
+    ...
+NameError: name 'a' is not defined
