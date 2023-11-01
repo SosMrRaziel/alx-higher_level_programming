@@ -1,44 +1,44 @@
-##########################################################
-#   Tests for text_indentation in 5-text_indentation.py  #
-##########################################################
-
-This is a set of test cases for the module print_square - a function
-which prints a square composed of '#'s to the dimension passed to it.
-
-# Import module
-
 >>> text_indentation = __import__('5-text_indentation').text_indentation
-
-
-# text = string with characters
->>> text = "blue. green: yellow? red"
->>> text_indentation(text)
-blue.
+>>> text_indentation("String")
+String
+>>> text_indentation("    4")
+4
+>>> text_indentation("   hello:    my name   is?:")
+hello:
 <BLANKLINE>
-green:
+my name   is?
 <BLANKLINE>
-yellow?
+:
 <BLANKLINE>
-red
-
-# text = string with no characters
->>> text_indentation("string with no characters")
-string with no characters
-
-# text = integer
->>> text_indentation(5)
+>>> text_indentation(["words"])
 Traceback (most recent call last):
 ...
 TypeError: text must be a string
-
-
-# text = with no space
->>> text_indentation("hello.there")
-hello.
+>>> text_indentation("?????  ")
+?
 <BLANKLINE>
-there
-
-# text = one match
->>> text_indentation("hello.")
-hello.
+?
+<BLANKLINE>
+?
+<BLANKLINE>
+?
+<BLANKLINE>
+?
+<BLANKLINE>
+>>> text_indentation("........  ")
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
 <BLANKLINE>

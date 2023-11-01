@@ -1,45 +1,30 @@
 #!/usr/bin/python3
+"""
+5-text_indentation.py
+def text_indentation(text)
+tests/5-text_indentation.txt
+"""
 
 
 def text_indentation(text):
-    """Prints two new lines after
-    characters: ., ? and :
-    Args:
-        text (str): string text
-    Raises:
-        TypeError: if `text` is not string
     """
-    if not isinstance(text, str):
+    Prints text with two newlines separating each line
+    """
+    if type(text) is not str:
         raise TypeError("text must be a string")
-    string = ''
+    text = text.strip(" ")
+    sep = [".", "?", ":"]
     i = 0
     while i < len(text):
-        string += text[i]
-        if text[i] in ['.', '?', ':']:
-            string = string.strip()
-            print(string + '\n')
-            try:
-                if text[i + 1] == ' ':
-                    i += 1
-            except IndexError:
-                pass
-            string = ''
+        if text[i] in sep:
+            print("{}\n".format(text[i]))
+            i += 1
+            if i == len(text):
+                return
+            while text[i] is " " and i < len(text):
+                i += 1
+            continue
+        print("{}".format(text[i]), end='')
         i += 1
-
-    if len(string) > 0:
-        print(string, end="")
-
-
-if __name__ == '__main__':
-    text_indentation("Lorem amet? consectetur adipiscing elit. Quonam: modo")
-    print()
-    text_indentation("text without characters")
-    print()
-    text_indentation("")
-    print()
-    text_indentation("hello.there")
-    print()
-    text_indentation("hello.")
-    print()
-    text_indentation("Holberton. School? How are you: John")
-    print()
+        if i == len(text) and text[i - 1] in sep:
+            print("\n")
