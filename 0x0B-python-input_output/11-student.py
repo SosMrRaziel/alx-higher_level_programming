@@ -20,7 +20,6 @@ class Student:
             # Return only the specified attributes
             return {k: v for k, v in self.__dict__.items() if k in attrs}
 
-
     def reload_from_json(self, json):
         """Replace all attributes of the student instance"""
         for k, v in json.items():
