@@ -26,6 +26,12 @@ class Rectangle(Base):
     def width(self, value):
         """Setter for width"""
         # Validate what a developer is trying to assign to a variable
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        # If width is under or equals 0, raise the ValueError
+        # exception with the message: width must be > 0
+        if value <= 0:
+            raise ValueError("width must be > 0")
         self.__width = value
 
     @property
@@ -37,6 +43,14 @@ class Rectangle(Base):
     def height(self, value):
         """Setter for height"""
         # Validate what a developer is trying to assign to a variable
+        # If the input is not an integer, raise the TypeError
+        # exception with the message: height must be an integer
+        if type(value) is not int:
+            raise TypeError("height must be an integer")
+        # If height is under or equals 0, raise the ValueError
+        # exception with the message: height must be > 0
+        if value <= 0:
+            raise ValueError("height must be > 0")
         self.__height = value
 
     @property
@@ -48,6 +62,14 @@ class Rectangle(Base):
     def x(self, value):
         """Setter for x"""
         # Validate what a developer is trying to assign to a variable
+        # If the input is not an integer, raise the TypeError exception
+        # with the message: x must be an integer
+        if type(value) is not int:
+            raise TypeError("x must be an integer")
+        # If x is under 0, raise the ValueError exception
+        # with the message: x must be >= 0
+        if value < 0:
+            raise ValueError("x must be >= 0")
         self.__x = value
 
     @property
@@ -59,4 +81,13 @@ class Rectangle(Base):
     def y(self, value):
         """Setter for y"""
         # Validate what a developer is trying to assign to a variable
+        # If the input is not an integer, raise the TypeError
+        # exception with the message: y must be an integer
+        if type(value) is not int:
+            raise TypeError("y must be an integer")
+        # If y is under 0, raise the ValueError
+        # exceptionwith the message: y must be >= 0
+
+        if value < 0:
+            raise ValueError("y must be >= 0")
         self.__y = value
