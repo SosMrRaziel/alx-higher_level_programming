@@ -130,3 +130,19 @@ class Rectangle(Base):
             for j in range(self.width):
                 print("#", end="")
             print() # To start a new line after each row
+
+    def update(self, *args):
+        """Public method that assigns an argument to each attribute"""
+        # Use the *args syntax to accept a variable number of arguments
+        # Assign each argument to the right attribute
+        # The order of the arguments is important
+        if len(args) > 0:
+            self.id = args[0]
+        if len(args) > 1:
+            self.width = args[1]
+        if len(args) > 2:
+            self.height = args[2]
+        if len(args) > 3:
+            self.x = args[3]
+        if len(args) > 4:
+            self.y = args[4]
