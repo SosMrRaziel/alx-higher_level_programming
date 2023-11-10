@@ -109,3 +109,24 @@ class Rectangle(Base):
         # the values of the attributes in the string
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
                  self.x, self.y, self.width, self.height)
+
+    def display(self):
+        """Public method that prints in stdout
+        the Rectangle instance with the character #"""
+        # To print a margin above the rectangle,
+        # you need to print a new line for each y unit
+        for i in range(self.y):
+            print()
+        # To print a rectangle, you need to print a row of
+        # characters for each height unit
+        # and repeat that for each width unit
+        # You can use a nested loop to achieve this
+        for i in range(self.height):
+            # To print a margin before the rectangle,
+            # you need to print a space for each x unit
+            for j in range(self.x):
+                print(" ", end="")
+            # To print the rectangle, you need to print a # for each width unit
+            for j in range(self.width):
+                print("#", end="")
+            print() # To start a new line after each row
