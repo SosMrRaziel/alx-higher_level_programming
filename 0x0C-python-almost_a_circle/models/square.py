@@ -19,10 +19,10 @@ class Square(Rectangle):
     def size(self, value):
         """Setter for size"""
         # Validate what a developer is trying to assign to a variable
-        # If the input is not an integer, raise the TypeError
+        # If the input is not an integer, raise the TypeError exception with the message: width must be an integer
         if type(value) is not int:
             raise TypeError("width must be an integer")
-        # If width is under or equals 0, raise the ValueError
+        # If width is under or equals 0, raise the ValueError exception with the message: width must be > 0
         if value <= 0:
             raise ValueError("width must be > 0")
         self.width = value
@@ -30,15 +30,12 @@ class Square(Rectangle):
 
     def __str__(self):
         """String representation of the Square instance"""
-        # Use the format method to insert
-        # the values of the attributes in the string
-        return "[Square] ({}) {}/{} - {}".format(
-            self.id, self.x, self.y, self.width)
+        # Use the format method to insert the values of the attributes in the string
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
 
     def update(self, *args, **kwargs):
         """Public method that assigns arguments to attributes"""
-        # If *args exists and is not empty,
-        # assign each argument to the right attribute
+        # If *args exists and is not empty, assign each argument to the right attribute
         if args:
             self.id = args[0]
         if len(args) > 1:
@@ -47,8 +44,7 @@ class Square(Rectangle):
             self.x = args[2]
         if len(args) > 3:
             self.y = args[3]
-        # If **kwargs exists and is not empty,
-        # assign each key/value pair to the right attribute
+        # If **kwargs exists and is not empty, assign each key/value pair to the right attribute
         if kwargs:
             for key, value in kwargs.items():
                 setattr(self, key, value)
