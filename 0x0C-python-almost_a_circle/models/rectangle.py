@@ -93,20 +93,63 @@ class Rectangle(Base):
     def display(self):
         """Public method that prints in stdout
         the Rectangle instance with the character #"""
+        # You don’t need to handle x and y here
+        # To print a rectangle, you need to print a row of
+        # characters for each height unit
+        # and repeat that for each width unit
+        # You can use a nested loop to achieve this
+        for i in range(self.__height):
+            for j in range(self.__width):
+                print("#", end="")
+            print()  # To start a new line after each row
+
+    def __str__(self):
+        """String representation of the Rectangle instance"""
+        # Use the format method to insert
+        # the values of the attributes in the string
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.x, self.y, self.width, self.height)
+
+    def display(self):
+        """Public method that prints in stdout
+        the Rectangle instance with the character #"""
         # To print a margin above the rectangle,
         # you need to print a new line for each y unit
-        print("\n" * self.y, end="")
+        for i in range(self.y):
+            print()
         # To print a rectangle, you need to print a row of
         # characters for each height unit
         # and repeat that for each width unit
         # You can use a nested loop to achieve this
         for i in range(self.height):
-            # To print a margin on the left of the rectangle,
+            # To print a margin before the rectangle,
             # you need to print a space for each x unit
-            print(" " * self.x, end="")
+            for j in range(self.x):
+                print(" ", end="")
+            # To print the rectangle, you need to print a # for each width unit
             for j in range(self.width):
                 print("#", end="")
             print()  # To start a new line after each row
+
+    def update(self, *args, **kwargs):
+        """Public method that assigns arguments to attributes"""
+        # If *args exists and is not empty,
+        # assign each argument to the right attribute
+        if args:
+            self.id = args[0]
+        if len(args) > 1:
+            self.width = args[1]
+        if len(args) > 2:
+            self.height = args[2]
+        if len(args) > 3:
+            self.x = args[3]
+        if len(args) > 4:
+            self.y = args[4]
+        # If **kwargs exists and is not empty,
+        # assign each key/value pair to the right attribute
+        if kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
     def __str__(self):
         """String representation of the Rectangle instance"""
