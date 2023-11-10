@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 '''In the file models/rectangle.py'''
 
-
 from models.base import Base
 
 
@@ -26,13 +25,10 @@ class Rectangle(Base):
     def width(self, value):
         """Setter for width"""
         # Validate what a developer is trying to assign to a variable
-        # If the input is not an integer,
-        # raise the TypeError exception with
-        # the message: width must be an integer
+        # If the input is not an integer, raise the TypeError
         if type(value) is not int:
             raise TypeError("width must be an integer")
-        # If width is under or equals 0,
-        # raise the ValueError exception with the message: width must be > 0
+        # If width is under or equals 0, raise the ValueError
         if value <= 0:
             raise ValueError("width must be > 0")
         self.__width = value
@@ -46,14 +42,10 @@ class Rectangle(Base):
     def height(self, value):
         """Setter for height"""
         # Validate what a developer is trying to assign to a variable
-        # If the input is not an integer,
-        # raise the TypeError exception with
-        # the message: height must be an integer
+        # If the input is not an integer, raise the TypeError
         if type(value) is not int:
             raise TypeError("height must be an integer")
-        # If height is under or equals 0,
-        # raise the ValueError exception
-        # with the message: height must be > 0
+        # If height is under or equals 0, raise the ValueError
         if value <= 0:
             raise ValueError("height must be > 0")
         self.__height = value
@@ -67,12 +59,10 @@ class Rectangle(Base):
     def x(self, value):
         """Setter for x"""
         # Validate what a developer is trying to assign to a variable
-        # If the input is not an integer,
-        # raise the TypeError exception with the message: x must be an integer
+        # If the input is not an integer, raise the TypeError
         if type(value) is not int:
             raise TypeError("x must be an integer")
         # If x is under 0, raise the ValueError
-        # exception with the message: x must be >= 0
         if value < 0:
             raise ValueError("x must be >= 0")
         self.__x = value
@@ -86,18 +76,36 @@ class Rectangle(Base):
     def y(self, value):
         """Setter for y"""
         # Validate what a developer is trying to assign to a variable
-        # If the input is not an integer,
-        # raise the TypeError exception with the message: y must be an integer
+        # If the input is not an integer, raise the TypeError
         if type(value) is not int:
             raise TypeError("y must be an integer")
         # If y is under 0, raise the ValueError
-        # exception with the message: y must be >= 0
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
 
     def area(self):
-        """Public method that returns
-        the area value of the Rectangle instance"""
+        """Public method that returns the area
+        value of the Rectangle instance"""
         # The area of a rectangle is the product of its width and height
         return self.__width * self.__height
+
+    def display(self):
+        """Public method that prints in stdout
+        the Rectangle instance with the character #"""
+        # You don’t need to handle x and y here
+        # To print a rectangle, you need to print a row of
+        # characters for each height unit
+        # and repeat that for each width unit
+        # You can use a nested loop to achieve this
+        for i in range(self.__height):
+            for j in range(self.__width):
+                print("#", end="")
+            print()  # To start a new line after each row
+
+    def __str__(self):
+        """String representation of the Rectangle instance"""
+        # Use the format method to insert
+        # the values of the attributes in the string
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                 self.x, self.y, self.width, self.height)
