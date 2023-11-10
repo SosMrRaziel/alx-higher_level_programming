@@ -107,8 +107,8 @@ class Rectangle(Base):
         """String representation of the Rectangle instance"""
         # Use the format method to insert
         # the values of the attributes in the string
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
-                 self.x, self.y, self.width, self.height)
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.x, self.y, self.width, self.height)
 
     def display(self):
         """Public method that prints in stdout
@@ -129,7 +129,7 @@ class Rectangle(Base):
             # To print the rectangle, you need to print a # for each width unit
             for j in range(self.width):
                 print("#", end="")
-            print() # To start a new line after each row
+            print()  # To start a new line after each row
 
     def update(self, *args, **kwargs):
         """Public method that assigns arguments to attributes"""
