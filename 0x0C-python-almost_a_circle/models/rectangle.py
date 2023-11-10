@@ -118,8 +118,8 @@ class Rectangle(Base):
         for i in range(self.y):
             print()
         # To print a rectangle, you need to print a row of
-        # characters for each height unit
-        # and repeat that for each width unit
+            # characters for each height unit
+            # and repeat that for each width unit
         # You can use a nested loop to achieve this
         for i in range(self.height):
             # To print a margin before the rectangle,
@@ -146,7 +146,7 @@ class Rectangle(Base):
         if len(args) > 4:
             self.y = args[4]
         # If **kwargs exists and is not empty,
-        # assign each key/value pair to the right attribute
+            # assign each key/value pair to the right attribute
         if kwargs:
             for key, value in kwargs.items():
                 setattr(self, key, value)
@@ -159,14 +159,14 @@ class Rectangle(Base):
             self.id, self.x, self.y, self.width, self.height)
 
     def to_dictionary(self):
-        """Public method that returns the dictionary representation of a Rectangle"""
+        """Public method that returns the dictionary
+        representation of a Rectangle"""
         # Create an empty dictionary
         rectangle_dict = {}
         # Assign the values of the attributes to the keys in the dictionary
-        rectangle_dict["id"] = self.id
-        rectangle_dict["width"] = self.width
-        rectangle_dict["height"] = self.height
         rectangle_dict["x"] = self.x
+        rectangle_dict["width"] = self.width
+        rectangle_dict["id"] = self.id
+        rectangle_dict["height"] = self.height
         rectangle_dict["y"] = self.y
-        # Return the dictionary
         return rectangle_dict
