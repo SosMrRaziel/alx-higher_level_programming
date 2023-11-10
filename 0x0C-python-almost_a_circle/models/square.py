@@ -30,5 +30,25 @@ class Square(Rectangle):
 
     def __str__(self):
         """String representation of the Square instance"""
-        # Use the format method to insert the values of the attributes in the string
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
+        # Use the format method to insert
+        # the values of the attributes in the string
+        return "[Square] ({}) {}/{} - {}".format(
+            self.id, self.x, self.y, self.width)
+
+    def update(self, *args, **kwargs):
+        """Public method that assigns arguments to attributes"""
+        # If *args exists and is not empty,
+        # assign each argument to the right attribute
+        if args:
+            self.id = args[0]
+        if len(args) > 1:
+            self.size = args[1]
+        if len(args) > 2:
+            self.x = args[2]
+        if len(args) > 3:
+            self.y = args[3]
+        # If **kwargs exists and is not empty,
+        # assign each key/value pair to the right attribute
+        if kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
