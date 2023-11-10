@@ -131,12 +131,11 @@ class Rectangle(Base):
                 print("#", end="")
             print() # To start a new line after each row
 
-    def update(self, *args):
-        """Public method that assigns an argument to each attribute"""
-        # Use the *args syntax to accept a variable number of arguments
-        # Assign each argument to the right attribute
-        # The order of the arguments is important
-        if len(args) > 0:
+    def update(self, *args, **kwargs):
+        """Public method that assigns arguments to attributes"""
+        # If *args exists and is not empty,
+        # assign each argument to the right attribute
+        if args:
             self.id = args[0]
         if len(args) > 1:
             self.width = args[1]
@@ -146,3 +145,8 @@ class Rectangle(Base):
             self.x = args[3]
         if len(args) > 4:
             self.y = args[4]
+        # If **kwargs exists and is not empty,
+        # assign each key/value pair to the right attribute
+        if kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
