@@ -42,17 +42,17 @@ class Base:
         Args:
             list_objs (list): A list of instances who inherits of Base
         """
-        # The filename must be <Class name>.json
+
         filename = cls.__name__ + ".json"
-        # An empty list to store the dictionaries of each object
+
         list_dicts = []
-        if list_objs is not None:  # If list_objs is not None
-            # For each object in list_objs
+        if list_objs is not None:
+
             for obj in list_objs:
-                # Append the dictionary of the object to list_dicts
+
                 list_dicts.append(obj.to_dictionary())
-        with open(filename, "w") as f:  # Open the file in write mode
-            # Write the JSON string of list_dicts to the file
+        with open(filename, "w") as f:
+
             f.write(cls.to_json_string(list_dicts))
 
     @staticmethod
@@ -68,7 +68,7 @@ class Base:
         if json_string is None or len(json_string) == 0:
             return []
         else:
-            # Return the list represented by json_string using json.loads
+
             return json.loads(json_string)
 
     @classmethod
@@ -79,14 +79,13 @@ class Base:
         Returns:
             Base: An instance of Base or its subclasses
         """
-        if cls.__name__ == "Rectangle":  # If the class is Rectangle
-            # Create a dummy instance with width and height set to 1
+        if cls.__name__ == "Rectangle":
+
             dummy = cls(1, 1)
-        elif cls.__name__ == "Square":  # If the class is Square
-            dummy = cls(1)  # Create a dummy instance with size set to 1
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
         else:
-            dummy = cls()  # Create a dummy instance with no arguments
-        # Update the dummy instance with the dictionary values
+            dummy = cls()
         dummy.update(**dictionary)
         return dummy
 
@@ -96,14 +95,13 @@ class Base:
         Returns:
             list: A list of instances of Base or its subclasses
         """
-        # The filename must be <Class name>.json
+
         filename = cls.__name__ + ".json"
-        list_instances = []  # An empty list to store the instances
-        if os.path.exists(filename):  # If the file exists
-            with open(filename, "r") as f:  # Open the file in read mode
-                # Read and convert the JSON string to a list of dictionaries
+        list_instances = []
+        if os.path.exists(filename):
+            with open(filename, "r") as f:
                 list_dicts = cls.from_json_string(f.read())
-            for dict in list_dicts:  # For each dictionary in the list
-                # Create an instance with the dictionary values
+            for dict in list_dicts:
+
                 list_instances.append(cls.create(**dict))
         return list_instances
