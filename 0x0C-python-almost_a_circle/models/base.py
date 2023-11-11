@@ -93,7 +93,6 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """Returns a list of instances
-
         Returns:
             list: A list of instances of Base or its subclasses
         """
