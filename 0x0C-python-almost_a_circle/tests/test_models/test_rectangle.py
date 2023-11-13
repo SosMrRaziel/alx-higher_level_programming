@@ -9,7 +9,7 @@ from models.rectangle import Rectangle
 class TestRectangle(unittest.TestCase):
     """A class that tests the Rectangle class"""
 
-    def test_init(self)
+    def test_init(self):
         """Test the __init__ method"""
         r1 = Rectangle(10, 2)
         self.assertEqual(r1.id, 1)
