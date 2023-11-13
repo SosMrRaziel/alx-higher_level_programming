@@ -1,122 +1,102 @@
 #!/usr/bin/python3
-"""Base class unittests"""
-import json
+"""Square class unittests"""
+import io
+import sys
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
 
-class TestBaseClass(unittest.TestCase):
+class TestSquareClass(unittest.TestCase):
 
     def test_class_membership(self):
-        """Base class unittest"""
-        b0 = Base()
-        self.assertIsInstance(b0, Base)
+        """Square class unittest"""
+        sq1 = Square(1)
+        self.assertIsInstance(sq1, Base)
+        self.assertIsInstance(sq1, Rectangle)
+        self.assertIsInstance(sq1, Square)
 
-    def test_no_id_arg(self):
-        """Base class ids unittest"""
-        b1 = Base()
-        b2 = Base()
-        b3 = Base()
-        self.assertEqual(b1.id, 7)
-        self.assertEqual(b2.id, 8)
-        self.assertEqual(b3.id, 9)
+    def test_attributes_with_correct_initialization(self):
+        """Square attribute unittest"""
+        sq2 = Square(5, x=8, y=5, id=25)
+        self.assertEqual(sq2.id, 25)
+        self.assertEqual(sq2.__str__(), '[Square] (25) 8/5 - 5')
+        self.assertEqual(sq2.area(), 25)
 
-    def test_no_id_plus_id_combo(self):
-        """Base class ids unittest"""
-        b4 = Base(5)
-        b5 = Base()
-        self.assertEqual(b4.id, 5)
-        self.assertEqual(b5.id, 10)
+    def test_attributes_wrong_data_types(self):
+        """Square wrong data types unittest"""
+        with self.assertRaises(TypeError):
+            sq3 = Square('a')
 
-    def test_to_json_string(self):
-        """to_json_string method unittest"""
-        r = Rectangle(10, 7, 2, 8)
-        rd = r.to_dictionary()
-        self.assertIsInstance(rd, dict)
-        json_rd = Base.to_json_string([rd])
-        self.assertIsInstance(json_rd, str)
+    def test_attributes_with_wrong_int_range(self):
+        """Square wrong int range unittest"""
+        with self.assertRaises(ValueError):
+            sq4 = Square(0)
+        with self.assertRaises(ValueError):
+            sq5 = Square(-1)
 
-        s = Square(10)
-        sd = s.to_dictionary()
-        self.assertIsInstance(sd, dict)
-        json_sd = Base.to_json_string([sd])
-        self.assertIsInstance(json_sd, str)
+    def test_area_method(self):
+        """Square area method unittest"""
+        sq6 = Square(10)
+        self.assertEqual(sq6.area(), 100)
 
-    def test_save_to_file(self):
-        """save_to_file method unittest"""
-        r1 = Rectangle(10, 7, 2, 8)
-        r2 = Rectangle(2, 4)
-        Rectangle.save_to_file([r1, r2])
-        dict_list = []
-        with open('Rectangle.json', 'r', encoding='utf-8') as f:
-            dict_list = json.load(f)
-        self.assertIsInstance(dict_list, list)
-        self.assertEqual(len(dict_list), 2)
-        list_ref = [
-            {'id': 11, 'height': 7, 'x': 2, 'width': 10, 'y': 8},
-            {'id': 12, 'height': 4, 'x': 0, 'width': 2, 'y': 0}
-        ]
-        self.assertListEqual(dict_list, list_ref)
+    def test_display_method(self):
+        """Square display method unittest"""
+        output = io.StringIO()
+        sys.stdout = output
+        sq7 = Square(2)
+        sq7.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(output.getvalue(), "##\n##\n")
 
-        Square.save_to_file([])
-        dict_list = []
-        with open('Square.json', 'r', encoding='utf-8') as f:
-            dict_list = json.load(f)
-        self.assertIsInstance(dict_list, list)
-        self.assertEqual(len(dict_list), 0)
+    def test_str_method(self):
+        """Square __str__ method unittest"""
+        sq8 = Square(2, id=99)
+        str_s = sq8.__str__()
+        self.assertEqual(str_s, '[Square] (99) 0/0 - 2')
 
-        s1 = Square(2, x=1, y=2, id=98)
-        s2 = Square(3, x=5, y=7, id=99)
-        Square.save_to_file([s1, s2])
-        dict_list = []
-        with open('Square.json', 'r', encoding='utf-8') as f:
-            dict_list = json.load(f)
-        self.assertIsInstance(dict_list, list)
-        self.assertEqual(len(dict_list), 2)
-        list_ref = [
-            {'x': 1, 'id': 98, 'size': 2, 'y': 2},
-            {'x': 5, 'id': 99, 'size': 3, 'y': 7}
-        ]
-        self.assertListEqual(dict_list, list_ref)
+    def test_display_method_w_coordinates(self):
+        """Square display method unittest"""
+        output = io.StringIO()
+        sys.stdout = output
+        sq9 = Square(2, x=1, y=1)
+        sq9.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(output.getvalue(), "\n ##\n ##\n")
 
-    def test_from_json_string(self):
-        """from_json_string method unittest"""
-        list_input = [
-            {'id': 89, 'width': 10, 'height': 4},
-            {'id': 7, 'width': 1, 'height': 7}
-        ]
-        json_list_input = Rectangle.to_json_string(list_input)
-        list_output = Rectangle.from_json_string(json_list_input)
-        self.assertListEqual(list_output, list_input)
+    def test_size_attribute(self):
+        """Square size method unittest"""
+        sq10 = Square(5)
+        self.assertEqual(sq10.size, 5)
+        sq10.size = 9
+        self.assertEqual(sq10.size, 9)
+        with self.assertRaises(TypeError):
+            sq10.size = 'a'
+        with self.assertRaises(ValueError):
+            sq10.size = -10
 
-        list_input = []
-        json_list_input = Rectangle.to_json_string(list_input)
-        list_output = Rectangle.from_json_string(json_list_input)
-        self.assertListEqual(list_output, list_input)
+    def test_update_method_args_kwargs(self):
+        """Square update method unittest"""
+        sq11 = Square(1)
+        sq11.update(1)
+        self.assertEqual(sq11.__str__(), '[Square] (1) 0/0 - 1')
+        sq11.update(1, 5)
+        self.assertEqual(sq11.__str__(), '[Square] (1) 0/0 - 5')
+        sq11.update(1, 5, 2, 3)
+        self.assertEqual(sq11.__str__(), '[Square] (1) 2/3 - 5')
+        sq11.update(id=99, x=4, y=7, size=8)
+        self.assertEqual(sq11.__str__(), '[Square] (99) 4/7 - 8')
 
-    def test_create_method(self):
-        """create method unittest"""
-        r1 = Rectangle(3, 5, 1)
-        r1_dictionary = r1.to_dictionary()
-        r2 = Rectangle.create(**r1_dictionary)
-        self.assertFalse(r1 is r2)
-        self.assertNotEqual(r2, r1)
-
-        s1 = Square(5, id=6, x=1, y=2)
-        s1_dictionary = s1.to_dictionary()
-        s2 = Square.create(**s1_dictionary)
-        self.assertFalse(s1 is s2)
-        self.assertNotEqual(s2, s1)
-
-    def test_load_from_file_method(self):
-        """load_from_file method unittest"""
-        r1 = Rectangle(10, 7, 2, 8, id=10)
-        r2 = Rectangle(2, 4, id=11)
-        list_rectangles_input = [r1, r2]
-        Rectangle.save_to_file(list_rectangles_input)
-        list_rectangles_output = Rectangle.load_from_file()
+    def test_to_dictionary_method(self):
+        """Square to_dictionary method unittest"""
+        sq12 = Square(3)
+        d = sq12.to_dictionary()
+        self.assertIsInstance(d, dict)
+        self.assertEqual(d['id'], 42)
+        self.assertEqual(d['size'], 3)
+        self.assertEqual(d['x'], 0)
+        self.assertEqual(d['y'], 0)
 
 if __name__ == '__main__':
     unittest.main()
