@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-'''In the file tests/test_rectangle.py'''
+'''In the file test_rectangle.py'''
 
 import unittest
 from models.rectangle import Rectangle
-
 
 class TestRectangle(unittest.TestCase):
     """A class that tests the Rectangle class"""
@@ -25,31 +24,57 @@ class TestRectangle(unittest.TestCase):
 
     def test_width(self):
         """Test the width getter and setter"""
-
+        r = Rectangle(10, 2)
+        self.assertEqual(r.width, 10)
+        r.width = 5
+        self.assertEqual(r.width, 5)
+        with self.assertRaises(TypeError):
+            r.width = "3"
+        with self.assertRaises(ValueError):
+            r.width = 0
 
     def test_height(self):
         """Test the height getter and setter"""
+        r = Rectangle(10, 2)
+        self.assertEqual(r.height, 2)
+        r.height = 5
+        self.assertEqual(r.height, 5)
+        with self.assertRaises(TypeError):
+            r.height = "3"
+        with self.assertRaises(ValueError):
+            r.height = 0
 
     def test_x(self):
         """Test the x getter and setter"""
-    
+        r = Rectangle(10, 2)
+        self.assertEqual(r.x, 0)
+        r.x = 5
+        self.assertEqual(r.x, 5)
+        with self.assertRaises(TypeError):
+            r.x = "3"
+        with self.assertRaises(ValueError):
+            r.x = -1
+
     def test_y(self):
         """Test the y getter and setter"""
+        r = Rectangle(10, 2)
+        self.assertEqual(r.y, 0)
+        r.y = 5
+        self.assertEqual(r.y, 5)
+        with self.assertRaises(TypeError):
+            r.y = "3"
+        with self.assertRaises(ValueError):
+            r.y = -1
 
     def test_area(self):
         """Test the area method"""
+        r = Rectangle(10, 2)
+        self.assertEqual(r.area(), 20)
+        r = Rectangle(2, 10)
+        self.assertEqual(r.area(), 20)
+        r = Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(r.area(), 56)
 
-    def test_display(self):
-        """Test the display method"""
-
-    def test_str(self):
-        """Test the __str__ method"""
-
-    def test_update(self):
-        """Test the update method"""
-
-    def test_to_dictionary(self):
-        """Test the to_dictionary method"""
 
 if __name__ == '__main__':
     unittest.main()
