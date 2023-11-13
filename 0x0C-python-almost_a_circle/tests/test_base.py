@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 '''test_base.py'''
 
+import json
 import unittest
 from models.base import Base
-from models.square import Square
 from models.rectangle import Rectangle
+from models.square import Square
 
 class TestBase(unittest.TestCase):
     """A class to test the Base class"""

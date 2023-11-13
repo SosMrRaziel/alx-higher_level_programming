@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 '''In the file test_rectangle.py'''
 
+import json
 import unittest
-from models.rectangle import Rectangle
 from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
 
 class TestRectangle(unittest.TestCase):
     """A class that tests the Rectangle class"""
