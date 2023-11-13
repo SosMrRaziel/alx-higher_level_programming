@@ -3,6 +3,7 @@
 
 import json   # Import the json module
 import os  # Import the os module
+import csv
 
 
 class Base:
@@ -104,4 +105,59 @@ class Base:
             for dict in list_dicts:
 
                 list_instances.append(cls.create(**dict))
+        return list_instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Writes the CSV string representation of list_objs to a file
+
+        Args:
+            list_objs (list): A list of instances who inherits of Base
+        """
+
+        filename = cls.__name__ + ".csv"
+
+        if list_objs is not None:
+
+            with open(filename, "w", newline="") as f:
+                writer = csv.writer(f)
+                for obj in list_objs:
+                    if cls.__name__ == "Rectangle":
+                        # Write the id, width, height, x, y of the rectangle
+                        writer.writerow(
+                            [obj.id, obj.width, obj.height, obj.x, obj.y])
+                    elif cls.__name__ == "Square":
+                        # Write the id, size, x, y of the square
+                        writer.writerow(
+                            [obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Returns a list of instances from a CSV file
+        Returns:
+            list: A list of instances of Base or its subclasses
+        """
+        filename = cls.__name__ + ".csv"
+        list_instances = []
+        if os.path.exists(filename):
+            with open(filename, "r") as f:
+                reader = csv.reader(f)
+                for row in reader:
+                    if cls.__name__ == "Rectangle":
+                        # Create a dictionary of attributes for the rectangle
+                        dict = {"id": int(row[0]),
+                                "width": int(row[1]),
+                                "height": int(row[2]),
+                                "x": int(row[3]),
+                                "y": int(row[4])}
+
+                    elif cls.__name__ == "Square":
+                        # Create a dictionary of attributes for the square
+                        dict = {"id": int(row[0]),
+                                "size": int(row[1]),
+                                "x": int(row[2]),
+                                "y": int(row[3])}
+
+                    # Create an instance using dictionary & append to the list
+                    list_instances.append(cls.create(**dict))
         return list_instances
