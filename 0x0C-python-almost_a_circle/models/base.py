@@ -39,7 +39,6 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """Writes the JSON string representation of list_objs to a file
-
         Args:
             list_objs (list): A list of instances who inherits of Base
         """
@@ -59,10 +58,8 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """Returns the list of the JSON string representation json_string
-
         Args:
             json_string (str): A string representing a list of dictionaries
-
         Returns:
             list: The list represented by json_string
         """
@@ -110,7 +107,6 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """Writes the CSV string representation of list_objs to a file
-
         Args:
             list_objs (list): A list of instances who inherits of Base
         """
