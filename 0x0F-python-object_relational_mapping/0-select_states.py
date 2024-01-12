@@ -22,6 +22,3 @@ if __name__ == "__main__":
     rows = cur.fetchall()
     for row in rows:
         print(row)
-if mydb.open:
-    cur.close()
-    mydb.close()
