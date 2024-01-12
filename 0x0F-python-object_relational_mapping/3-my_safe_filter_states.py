@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-A script that is safe from SQL injections and lists all states from the database hbtn_0e_0_usa.
+A script that is safe from SQL injections 
+and lists all states from the database hbtn_0e_0_usa.
 """
 import MySQLdb
 import sys
