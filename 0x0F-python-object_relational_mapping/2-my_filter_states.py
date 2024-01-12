@@ -23,5 +23,5 @@ if __name__ == "__main__":
                 ORDER BY id".format(state_name_searched))
     rows = cur.fetchall()
     for row in rows:
-        if row [1] == (state_name_searched):
+        if row[1] == (state_name_searched):
             print(row)
