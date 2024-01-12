@@ -23,8 +23,5 @@ if __name__ == "__main__":
                  WHERE states.name = %s \
                  ORDER BY cities.id ASC", (state_name,))
     query_rows = cur.fetchall()
-    for row in query_rows:
-        if row != query_rows[-1]:
-            print(row[0], end=', ')
-        else:
-            print(row[0])
+    rows = ", ".join(rows[0] for rows in query_rows)
+    print(rows)
