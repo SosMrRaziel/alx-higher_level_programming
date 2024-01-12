@@ -19,8 +19,8 @@ if __name__ == "__main__":
                            db=database
                            )
     cur = mydb.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s\
-                ORDER BY id", (state_name_searched,))
+    cur.execute("SELECT * FROM states WHERE name = '{:s}'\
+                ORDER BY id".format(state_name_searched))
     rows = cur.fetchall()
     for row in rows:
         if row [1] == (state_name_searched):
