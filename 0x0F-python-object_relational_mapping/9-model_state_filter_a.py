@@ -16,5 +16,6 @@ if __name__ == "__main__":
     engine = create_engine(db_url)
     Session = sessionmaker(bind=engine)
     session = Session()
-    for instance in session.query(State).filter(State.name.like('%a')).order_by(State.id):
+    for instance in session.query(
+            State).filter(State.name.like('%a%')).order_by(State.id):
         print("{}: {}".format(instance.id, instance.name))
