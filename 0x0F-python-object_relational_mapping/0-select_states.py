@@ -11,11 +11,11 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database = sys.argv[3]
 
-    mydb = MySQLdb.connect(host = "localhost",
-                           port = 3306,
-                           user = username,
-                           password = password,
-                           db = database
+    mydb = MySQLdb.connect(host="localhost",
+                           port=3306,
+                           user=username,
+                           password=password,
+                           db=database
                            )
     cur = mydb.cursor()
     cur.execute("SELECT * FROM states")
