@@ -1,26 +1,25 @@
+
+
 #!/usr/bin/python3
 """
-python file that contains the class definition of a State
-and an instance Base = declarative_base()
+Contains the class definition of a City.
 """
+
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
-
-
-Base = declarative_base()
-
+from model_state import Base, State
 
 class City(Base):
-    """
-    creates state class
-    links to the MySQL table states
-    class attribute id that represents a column
-    class attribute name that represents a column
-     must use the module SQLAlchemy
-     should connect to a MySQL server running on localhost at port 3306
-     """
+    """Attributes of the City class:
 
-    __tablename__ = "cities"
-    id = Column(Integer, primary_key=True, nullable=False)
+id: An integer that serves as the unique identifier for each city.
+It is auto-generated, cannot be null, and is set as the primary key of the table.
+name: A string of up to 128 characters that represents the name of the city.
+This attribute cannot be null.
+state_id: An integer that acts as a foreign key to the id attribute of the states table.
+It cannot be null and establishes a relationship
+between each city and its corresponding state."""
+    __tablename__ = 'cities'
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement="auto")
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey('states.id'))
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
