@@ -19,3 +19,4 @@ if __name__ == "__main__":
     print(r.headers["Content-type"])
     if r == "application/json":
         r_js = r.json()
+        print(r_js)
