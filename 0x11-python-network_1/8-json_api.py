@@ -16,8 +16,8 @@ if __name__ == "__main__":
     
     data = {"q" : q}
     r = requests.post(url, data)
-    r = r.headers["Content-type"]
-    if r == "application/json":
+    r_content_type = r.headers["Content-type"]
+    if r_content_type == "application/json":
         r_js = r.json()
         if r_js == {}:
             print("No result")
