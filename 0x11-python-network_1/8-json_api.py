@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" a Python script that takes in a letter and sends a POST request 
+""" a Python script that takes in a letter and sends a POST request
 to http://0.0.0.0:5000/search_user with the letter as a parameter."""
 
 
@@ -13,8 +13,8 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         q = sys.argv[1]
-    
-    data = {"q" : q}
+
+    data = {"q": q}
     r = requests.post(url, data)
     r_content_type = r.headers["Content-type"]
     if r_content_type == "application/json":
