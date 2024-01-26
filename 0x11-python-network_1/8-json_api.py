@@ -16,4 +16,4 @@ if __name__ == "__main__":
     
     data = {"q" : q}
     r = requests.post(url, data)
-    print(r)
+    print(r.headers)
