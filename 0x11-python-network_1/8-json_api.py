@@ -19,4 +19,9 @@ if __name__ == "__main__":
     print(r.headers["Content-type"])
     if r == "application/json":
         r_js = r.json()
-        print(r_js)
+        if r_js == {}:
+            print("No result")
+        else:
+            print("[{}] {}".format(r_js["id"], r_js["name"]))
+    else:
+        print("Not a valid JSON")
